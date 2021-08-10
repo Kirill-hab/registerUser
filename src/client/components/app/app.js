@@ -14,9 +14,7 @@ export default class App extends Component {
     }
 
     setMessage = (message) => {
-        this.setState({
-            message
-        })
+        this.setState({message})
     }
 
     registrationUser = (data) => {
@@ -27,22 +25,25 @@ export default class App extends Component {
         UserActions.loginUser(data, this.setMessage)
     }
 
-    upStatusApp = () => {
+
+    upDateStatus = () => {
         this.setState({action: !this.state.action})
     }
 
     render() {
         const {action, message} = this.state
+
         return (
             <div>
                 <Header
-                    upStatus={this.upStatusApp}
+                    upStatus={this.upDateStatus}
                     statusApp={action}
                 />
 
                 <Form
                     onAddUser={this.registrationUser}
                     loginUser={this.loginUser}
+                    messFun={this.setMessage}
                     statusApp={action}
                     message={message}
                 />

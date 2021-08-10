@@ -16,14 +16,15 @@ export default class Form extends Component {
 
     createUser = () => {
         const {username, password} = this.state;
+        const {onAddUser, messFun} = this.props
 
         if (username.length < 4) {
-            alert("userName < 4");
+            messFun('userName < 4');
             return;
         }
 
         if (password.length < 4) {
-            alert("password < 4");
+            messFun('password < 4');
             return;
         }
 
@@ -32,7 +33,7 @@ export default class Form extends Component {
             password
         }
 
-        this.props.onAddUser(user)
+        onAddUser(user)
         this.setState({username: '', password: ''})
     }
 
@@ -41,7 +42,6 @@ export default class Form extends Component {
             [event.target.getAttribute('id')]: event.target.value
         });
     }
-
 
     render() {
         const {username, password} = this.state;
